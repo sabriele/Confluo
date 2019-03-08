@@ -117,6 +117,34 @@ class Sidebar extends React.Component {
 
     var links = (
       <React.Fragment>
+        <div style={{ marginBottom: "20px" }}>
+          <div className={photo}>
+            <img
+              src={"https://png.pngtree.com/svg/20161221/988176b79c.png"}
+              className={classes.avatarImg}
+              alt="..."
+              style={{
+                objectFit: "cover",
+                height: "100%"
+              }}
+            />
+          </div>
+          <List className={classes.list}>
+            <ListItem className={classes.item + " " + classes.userItem}>
+              <NavLink
+                to={`/students/new`}
+                className={classes.itemLink + " " + classes.userCollapseButton}
+                onClick={() => this.openCollapse("openAvatar")}
+              >
+                <ListItemText
+                  primary={"Add a Student"}
+                  disableTypography={true}
+                  className={itemText + " " + classes.userItemText}
+                />
+              </NavLink>
+            </ListItem>
+          </List>
+        </div>
         {students.map(
           (student, i) =>
             student.active ? (
@@ -135,7 +163,7 @@ class Sidebar extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.item + " " + classes.userItem}>
                     <NavLink
-                      to={`/student/${student._id}`}
+                      to={`/students/${student._id}`}
                       className={
                         classes.itemLink + " " + classes.userCollapseButton
                       }

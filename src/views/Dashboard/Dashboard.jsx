@@ -87,8 +87,8 @@ class Dashboard extends React.Component {
               </GridItem>
               <GridItem xs={12} lg={4}>
                 <Card>
-                  <CardHeader color="info" stats icon>
-                    <CardIcon color="info">
+                  <CardHeader color="primary" stats icon>
+                    <CardIcon color="primary">
                       <Icon>face</Icon>
                     </CardIcon>
                     <p className={classes.cardCategory}>Students</p>
@@ -127,11 +127,11 @@ class Dashboard extends React.Component {
                 </Card>
               </GridItem>
             </GridContainer>
-            <GridContainer justify="space-between">
-              <GridItem xs={12} sm={12} md={8}>
+            <GridContainer justify="space-between" alignItems="center">
+              <GridItem xs={12} sm={9}>
                 <h3>Manage Students</h3>
               </GridItem>
-              <GridItem xs={12} sm={12} md={4}>
+              <GridItem xs={12} sm={3}>
                 <CustomInput
                   formControlProps={{
                     className: classes.top + " " + classes.search
@@ -255,8 +255,8 @@ class Dashboard extends React.Component {
           </GridItem>
           <GridItem xs={12} sm={12} md={3} lg={3}>
             <Card>
-              <CardHeader color="primary" icon>
-                <CardIcon color="primary">
+              <CardHeader color="info" icon>
+                <CardIcon color="info">
                   <Icon>info_outline</Icon>
                 </CardIcon>
                 <h4 className={classes.cardIconTitle}>Next Lessons</h4>
