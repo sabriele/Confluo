@@ -35,7 +35,7 @@ class StudentForm extends React.Component {
     lastName: "",
     imageUrl: "",
     level: { type: "", year: "" },
-    subject: [],
+    subjects: [],
     address: "",
     regularSchedule: [{ day: "", time: "", duration: "" }],
     rates: "",
@@ -69,9 +69,9 @@ class StudentForm extends React.Component {
     const input = event.target.value;
     if (input.includes(",")) {
       const subjects = input.split(",").map(n => n.trim());
-      this.setState({ subject: [...subjects] });
+      this.setState({ subjects: [...subjects] });
     } else {
-      this.setState({ subject: [input] });
+      this.setState({ subjects: [input] });
     }
   };
 
@@ -405,21 +405,21 @@ class StudentForm extends React.Component {
                   </GridItem>
                   <GridItem xs={12} sm={1}>
                     <FormLabel className={classes.labelHorizontal}>
-                      Subject
+                      Subjects
                     </FormLabel>
                   </GridItem>
                   <GridItem xs={12} sm={3}>
                     <GridContainer>
                       <GridItem xs={12}>
                         <CustomInput
-                          id="subject"
+                          id="subjects"
                           formControlProps={{
                             fullWidth: true
                           }}
                           inputProps={{
                             placeholder: "",
                             onChange: event => this.handleSubject(event),
-                            name: "subject",
+                            name: "subjects",
                             type: "text"
                           }}
                           helpText="Seperate different subjects with commas"

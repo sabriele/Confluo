@@ -212,7 +212,7 @@ class Dashboard extends React.Component {
                           <div style={{ textAlign: "center" }}>
                             <h6 className={classes.cardProductDesciption}>
                               {student.level.type} {student.level.year} |{" "}
-                              {student.subject.map((subject, i) => [
+                              {student.subjects.map((subject, i) => [
                                 i > 0 && ", ",
                                 <span key={i}>{subject}</span>
                               ])}

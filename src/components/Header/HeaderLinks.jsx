@@ -91,31 +91,33 @@ class HeaderLinks extends React.Component {
                         onClick={this.handleClose}
                         className={dropdownItem}
                       >
-                        {"Mike John responded to your email"}
+                        {"New student Andrea Lee first lesson: 18th March"}
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleClose}
                         className={dropdownItem}
                       >
-                        {"You have 5 new tasks"}
+                        {"Ben Ang would like to cancel lesson on 30th March"}
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleClose}
                         className={dropdownItem}
                       >
-                        {"You're now friend with Andrew"}
+                        {"Farid Bakar has made payment for 4 lessons"}
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleClose}
                         className={dropdownItem}
                       >
-                        {"Another Notification"}
+                        {"Farida Bakar has made payment for 4 lessons"}
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleClose}
                         className={dropdownItem}
                       >
-                        {"Another One"}
+                        {
+                          "Lesson change request for Keith Chye on 9th March accepted"
+                        }
                       </MenuItem>
                     </MenuList>
                   </ClickAwayListener>

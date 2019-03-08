@@ -6,7 +6,7 @@ let students = [
     lastName: "Ang",
     imageUrl: "/students/ben_ang.jpg",
     level: { type: "Primary", year: 3 },
-    subject: ["Mathematics"],
+    subjects: ["Mathematics"],
     address: "7 Lavender Avenue North",
     regularSchedule: [
       {
@@ -30,7 +30,7 @@ let students = [
     lastName: "Bakar",
     imageUrl: "/students/farid_bakar.jpg",
     level: { type: "Secondary", year: 1 },
-    subject: ["Science"],
+    subjects: ["Science"],
     address: "6 Bukit Ho Swee Walk, #04-30",
     regularSchedule: [
       {
@@ -53,7 +53,7 @@ let students = [
     lastName: "Govindasamy",
     imageUrl: "/students/luke_govindasamy.jpg",
     level: { type: "Primary", year: 6 },
-    subject: ["Science", "Mathematics"],
+    subjects: ["Science", "Mathematics"],
     address: "2 MacPherson Lane",
     regularSchedule: [
       {
@@ -82,7 +82,7 @@ let students = [
     lastName: "Bakar",
     imageUrl: "/students/farida_bakar.jpg",
     level: { type: "Primary", year: 4 },
-    subject: ["Science"],
+    subjects: ["Science"],
     address: "6 Bukit Ho Swee Walk, #04-30",
     regularSchedule: [
       {
@@ -105,7 +105,7 @@ let students = [
     lastName: "Woo",
     imageUrl: "/students/reuben_woo.jpg",
     level: { type: "Primary", year: 1 },
-    subject: ["english"],
+    subjects: ["english"],
     address: "Blk 204 Boon Lay Street 81, #10-41",
     regularSchedule: [
       {
@@ -128,7 +128,7 @@ let students = [
     lastName: "Tan",
     imageUrl: "/students/daryl_tan.jpg",
     level: { type: "Primary", year: 6 },
-    subject: ["Mathematics"],
+    subjects: ["Mathematics"],
     address: "2 MacPherson Lane",
     regularSchedule: [
       {
@@ -151,7 +151,7 @@ let students = [
     lastName: "Sharma",
     imageUrl: "/students/arnav_sharma.jpg",
     level: { type: "Primary", year: 6 },
-    subject: ["Mathematics"],
+    subjects: ["Mathematics"],
     address: "2 MacPherson Lane",
     regularSchedule: [
       {
@@ -174,7 +174,7 @@ let students = [
     lastName: "Chye",
     imageUrl: "/students/keith_chye.jpg",
     level: { type: "Primary", year: "3" },
-    subject: ["Mathematics"],
+    subjects: ["Mathematics"],
     address: "Blk 408 Sengkang Street 76, #15-36",
     regularSchedule: [
       {
@@ -197,7 +197,7 @@ let students = [
     lastName: "Gross",
     imageUrl: "/students/ella_gross.jpg",
     level: { type: "Primary", year: "5" },
-    subject: ["Mathematics"],
+    subjects: ["Mathematics"],
     address: "24 Jalan Pelangi",
     regularSchedule: [
       {
@@ -220,7 +220,7 @@ let students = [
     lastName: "Lim",
     imageUrl: "/students/sarah_jane_lim.jpg",
     level: { type: "Primary", year: "4" },
-    subject: ["Mathematics"],
+    subjects: ["Mathematics"],
     address: "30 Tai Seng Field, #08-11",
     regularSchedule: [
       {

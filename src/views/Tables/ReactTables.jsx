@@ -117,7 +117,6 @@ class ReactTables extends React.Component {
               >
                 <Close />
               </Button>
-
             </div>
           )
         };
