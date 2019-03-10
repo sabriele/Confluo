@@ -5,9 +5,8 @@ import ReactTable from "react-table";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
-import Assignment from "@material-ui/icons/Assignment";
-import Dvr from "@material-ui/icons/Dvr";
-import Favorite from "@material-ui/icons/Favorite";
+import SupervisorAccount from "@material-ui/icons/SupervisorAccount";
+import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -18,9 +17,11 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 
-import { dataTable } from "variables/general.jsx";
-
 import { cardTitle } from "assets/jss/confluo.jsx";
+
+import { getStudents, deleteStudent } from "../../services/studentService";
+
+var moment = require("moment");
 
 const styles = {
   cardIconTitle: {
@@ -30,71 +31,39 @@ const styles = {
   }
 };
 
-class ReactTables extends React.Component {
+class Students extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: dataTable.dataRows.map((prop, key) => {
+      data: getStudents().map(student => {
         return {
-          id: key,
-          name: prop[0],
-          position: prop[1],
-          office: prop[2],
-          age: prop[3],
+          id: student._id,
+          name: `${student.firstName} ${student.lastName}`,
+          level: `${student.level.type} ${student.level.year}`,
+          subjects: student.subjects.map((subject, i) => [
+            i > 0 && ", ",
+            <span key={i}>{subject}</span>
+          ]),
+          regularSchedule: student.regularSchedule.map((schedule, i) => [
+            <p key={i}>
+              {schedule.day}, {moment(schedule.time).format("hA")}
+            </p>
+          ]),
+          rates: `$ ${student.rates}`,
+          startDate: `${student.startDate}`,
+          active: `${student.active ? "Yes" : "No"}`,
           actions: (
-            // we've added some custom button actions
             <div className="actions-right">
-              {/* use this button to add a like kind of action */}
               <Button
                 justIcon
                 round
                 simple
-                onClick={() => {
-                  let obj = this.state.data.find(o => o.id === key);
-                  alert(
-                    "You've clicked LIKE button on \n{ \nName: " +
-                      obj.name +
-                      ", \nposition: " +
-                      obj.position +
-                      ", \noffice: " +
-                      obj.office +
-                      ", \nage: " +
-                      obj.age +
-                      "\n}."
-                  );
-                }}
-                color="info"
-                className="like"
-              >
-                <Favorite />
-              </Button>
-
-              {/* use this button to add a edit kind of action */}
-              <Button
-                justIcon
-                round
-                simple
-                onClick={() => {
-                  let obj = this.state.data.find(o => o.id === key);
-                  alert(
-                    "You've clicked EDIT button on \n{ \nName: " +
-                      obj.name +
-                      ", \nposition: " +
-                      obj.position +
-                      ", \noffice: " +
-                      obj.office +
-                      ", \nage: " +
-                      obj.age +
-                      "\n}."
-                  );
-                }}
+                onClick={() => {}}
                 color="warning"
                 className="edit"
               >
-                <Dvr />
+                <Edit />
               </Button>
-
-              {/* use this button to remove the data row */}
               <Button
                 justIcon
                 round
@@ -102,15 +71,14 @@ class ReactTables extends React.Component {
                 onClick={() => {
                   var data = this.state.data;
                   data.find((o, i) => {
-                    if (o.id === key) {
-                      // here you should add some custom code so you can delete the data
-                      // from this component and from your server as well
+                    if (o.id === student._id) {
+                      deleteStudent();
                       data.splice(i, 1);
                       return true;
                     }
                     return false;
                   });
-                  this.setState({ data: data });
+                  this.setState({ data });
                 }}
                 color="danger"
                 className="remove"
@@ -124,16 +92,14 @@ class ReactTables extends React.Component {
     };
   }
   render() {
-    const { classes } = this.props;
     return (
       <GridContainer>
         <GridItem xs={12}>
           <Card>
             <CardHeader color="primary" icon>
               <CardIcon color="primary">
-                <Assignment />
+                <SupervisorAccount />
               </CardIcon>
-              <h4 className={classes.cardIconTitle}>React Table</h4>
             </CardHeader>
             <CardBody>
               <ReactTable
@@ -145,19 +111,31 @@ class ReactTables extends React.Component {
                     accessor: "name"
                   },
                   {
-                    Header: "Position",
-                    accessor: "position"
+                    Header: "Level",
+                    accessor: "level"
                   },
                   {
-                    Header: "Office",
-                    accessor: "office"
+                    Header: "Subjects",
+                    accessor: "subjects"
                   },
                   {
-                    Header: "Age",
-                    accessor: "age"
+                    Header: "Schedule",
+                    accessor: "regularSchedule"
                   },
                   {
-                    Header: "Actions",
+                    Header: "Rates",
+                    accessor: "rates"
+                  },
+                  {
+                    Header: "Start Date",
+                    accessor: "startDate"
+                  },
+                  {
+                    Header: "Current Student",
+                    accessor: "active"
+                  },
+                  {
+                    Header: "",
                     accessor: "actions",
                     sortable: false,
                     filterable: false
@@ -176,4 +154,4 @@ class ReactTables extends React.Component {
   }
 }
 
-export default withStyles(styles)(ReactTables);
+export default withStyles(styles)(Students);

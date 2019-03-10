@@ -36,7 +36,7 @@ function Header({ ...props }) {
     if (name) {
       return name;
     } else {
-      return "Default Brand Name";
+      return "";
     }
   }
   const { classes, color } = props;
