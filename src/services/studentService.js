@@ -105,7 +105,7 @@ let students = [
     lastName: "Woo",
     imageUrl: "/students/reuben_woo.jpg",
     level: { type: "Primary", year: 1 },
-    subjects: ["english"],
+    subjects: ["English"],
     address: "Blk 204 Boon Lay Street 81, #10-41",
     regularSchedule: [
       {

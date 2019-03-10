@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/jsx-key */
 import React from "react";
+import { Link } from "react-router-dom";
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -10,11 +11,11 @@ import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 // import ContentCopy from "@material-ui/icons/ContentCopy";
 import Store from "@material-ui/icons/Store";
-import Refresh from "@material-ui/icons/Refresh";
 import Edit from "@material-ui/icons/Edit";
 import Place from "@material-ui/icons/Place";
-import ArtTrack from "@material-ui/icons/ArtTrack";
 import Search from "@material-ui/icons/Search";
+import DateRange from "@material-ui/icons/DateRange";
+import Clear from "@material-ui/icons/Clear";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -30,7 +31,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import dashboardStyle from "assets/jss/confluo/views/dashboardStyle";
 
-import { getStudents } from "../../services/studentService";
+import { getStudents, deleteStudent } from "../../services/studentService";
 
 var moment = require("moment");
 
@@ -103,9 +104,9 @@ class Dashboard extends React.Component {
                 <Card>
                   <CardHeader color="danger" icon>
                     <CardIcon color="danger">
-                      <Icon>info_outline</Icon>
+                      <Icon>error_outline</Icon>
                     </CardIcon>
-                    <h4 className={classes.cardIconTitle}>Pending Payments</h4>
+                    <h3 className={classes.cardIconTitle}>Pending Payments</h3>
                   </CardHeader>
                   <CardBody>
                     <GridContainer>
@@ -167,22 +168,10 @@ class Dashboard extends React.Component {
                     <GridItem xs={12} sm={12} md={4} key={i}>
                       <Card product className={classes.cardHover}>
                         <CardHeader image className={classes.cardHeaderHover}>
-                          <a href="#pablo" onClick={e => e.preventDefault()}>
-                            <img src={student.imageUrl} alt="..." />
-                          </a>
+                          <img src={student.imageUrl} alt="..." />
                         </CardHeader>
                         <CardBody>
                           <div className={classes.cardHoverUnder}>
-                            <Tooltip
-                              id="tooltip-top"
-                              title="View"
-                              placement="bottom"
-                              classes={{ tooltip: classes.tooltip }}
-                            >
-                              <Button color="transparent" simple justIcon>
-                                <ArtTrack className={classes.underChartIcons} />
-                              </Button>
-                            </Tooltip>
                             <Tooltip
                               id="tooltip-top"
                               title="Edit"
@@ -190,7 +179,7 @@ class Dashboard extends React.Component {
                               classes={{ tooltip: classes.tooltip }}
                             >
                               <Button color="success" simple justIcon>
-                                <Refresh className={classes.underChartIcons} />
+                                <Edit className={classes.underChartIcons} />
                               </Button>
                             </Tooltip>
                             <Tooltip
@@ -199,15 +188,22 @@ class Dashboard extends React.Component {
                               placement="bottom"
                               classes={{ tooltip: classes.tooltip }}
                             >
-                              <Button color="danger" simple justIcon>
-                                <Edit className={classes.underChartIcons} />
+                              <Button
+                                color="danger"
+                                simple
+                                justIcon
+                                onClick={() => {
+                                  deleteStudent();
+                                  students.splice(i, 1);
+                                  this.setState({ students });
+                                }}
+                              >
+                                <Clear className={classes.underChartIcons} />
                               </Button>
                             </Tooltip>
                           </div>
                           <h4 className={classes.cardProductTitle}>
-                            <a href="#pablo" onClick={e => e.preventDefault()}>
-                              {student.firstName} {student.lastName}
-                            </a>
+                            {student.firstName} {student.lastName}
                           </h4>
                           <div style={{ textAlign: "center" }}>
                             <h6 className={classes.cardProductDesciption}>
@@ -237,13 +233,18 @@ class Dashboard extends React.Component {
                           >
                             <Place /> {student.address}
                           </div>
-                          <div
+                          <Button
                             className={`${classes.stats} ${
                               classes.productStats
                             }`}
+                            color="transparent"
+                            simple
+                            component={Link}
+                            to={`/students/${student._id}`}
+                            style={{ padding: "12px 0px" }}
                           >
-                            More »
-                          </div>
+                            View »
+                          </Button>
                         </CardFooter>
                       </Card>
                     </GridItem>
@@ -257,9 +258,9 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="info" icon>
                 <CardIcon color="info">
-                  <Icon>info_outline</Icon>
+                  <DateRange />
                 </CardIcon>
-                <h4 className={classes.cardIconTitle}>Next Lessons</h4>
+                <h3 className={classes.cardIconTitle}>Next Lessons</h3>
               </CardHeader>
               <CardBody>
                 <GridContainer>

@@ -2,7 +2,8 @@ import {
   primaryColor,
   dangerColor,
   roseColor,
-  grayColor
+  grayColor,
+  successColor
 } from "assets/jss/confluo.jsx";
 
 const customCheckboxRadioSwitch = {
@@ -31,7 +32,7 @@ const customCheckboxRadioSwitch = {
     marginBottom: "0"
   },
   checked: {
-    color: primaryColor + "!important"
+    color: successColor + "!important"
   },
   checkedIcon: {
     width: "20px",

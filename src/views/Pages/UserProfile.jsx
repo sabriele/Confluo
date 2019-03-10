@@ -21,7 +21,7 @@ import CardAvatar from "components/Card/CardAvatar.jsx";
 
 import userProfileStyles from "assets/jss/confluo/views/userProfileStyles.jsx";
 
-import avatar from "assets/img/faces/marc.jpg";
+import avatar from "assets/img/faces/avatar.jpg";
 
 function UserProfile(props) {
   const { classes } = props;
@@ -124,7 +124,7 @@ function UserProfile(props) {
                 <GridItem xs={12} sm={12} md={12}>
                   <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
                   <CustomInput
-                    labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
+                    labelText=""
                     id="about-me"
                     formControlProps={{
                       fullWidth: true
@@ -146,21 +146,26 @@ function UserProfile(props) {
         <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="..." />
-              </a>
+              <img src={avatar} alt="..." />
             </CardAvatar>
             <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
-              <p className={classes.description}>
-                Don't be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...
+              <h4 className={classes.cardTitle}>Sabrina Tjeng</h4>
+              <h6 className={classes.cardCategory}>sabriele@gmail.com</h6>
+              <p>
+                <span className={classes.description}>Teacher since: </span>
+                12 November 2016
               </p>
-              <Button color="rose" round>
-                Follow
-              </Button>
+              <p>
+                <span className={classes.description}>Address: </span>
+                501 Ang Mo Kio Street 13, Singapore 569405
+              </p>
+              <p>
+                <span className={classes.description}>Classes: </span>9
+              </p>
+              <p>
+                <span className={classes.description}>Students: </span>
+                12
+              </p>
             </CardBody>
           </Card>
         </GridItem>

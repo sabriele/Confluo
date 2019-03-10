@@ -132,12 +132,42 @@ class Sidebar extends React.Component {
           <List className={classes.list}>
             <ListItem className={classes.item + " " + classes.userItem}>
               <NavLink
-                to={`/students/new`}
+                to={"/students/new"}
                 className={classes.itemLink + " " + classes.userCollapseButton}
                 onClick={() => this.openCollapse("openAvatar")}
               >
                 <ListItemText
                   primary={"Add a Student"}
+                  disableTypography={true}
+                  className={itemText + " " + classes.userItemText}
+                />
+              </NavLink>
+            </ListItem>
+          </List>
+        </div>
+        <div style={{ marginBottom: "20px" }}>
+          <div className={photo}>
+            <img
+              src={
+                "https://visualpharm.com/assets/418/User%20Group%20Man%20Woman-595b40b85ba036ed117dad45.svg"
+              }
+              className={classes.avatarImg}
+              alt="..."
+              style={{
+                objectFit: "cover",
+                height: "100%"
+              }}
+            />
+          </div>
+          <List className={classes.list}>
+            <ListItem className={classes.item + " " + classes.userItem}>
+              <NavLink
+                to={"/students"}
+                className={classes.itemLink + " " + classes.userCollapseButton}
+                onClick={() => this.openCollapse("openAvatar")}
+              >
+                <ListItemText
+                  primary={"All Students"}
                   disableTypography={true}
                   className={itemText + " " + classes.userItemText}
                 />
@@ -167,7 +197,6 @@ class Sidebar extends React.Component {
                       className={
                         classes.itemLink + " " + classes.userCollapseButton
                       }
-                      onClick={() => this.openCollapse("openAvatar")}
                     >
                       <ListItemText
                         primary={`${student.firstName} ${student.lastName}`}

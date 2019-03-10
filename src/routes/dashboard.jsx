@@ -1,9 +1,7 @@
 import Dashboard from "views/Dashboard/Dashboard.jsx";
-import Panels from "views/Components/Panels.jsx";
-import Notifications from "views/Components/Notifications.jsx";
-import StudentForm from "views/Forms/StudentForm.jsx";
-import ExtendedTables from "views/Tables/ExtendedTables.jsx";
-import ReactTables from "views/Tables/ReactTables.jsx";
+import StudentForm from "views/Students/StudentForm.jsx";
+import Students from "views/Students/Students.jsx";
+import Student from "views/Students/Student.jsx";
 import Calendar from "views/Calendar/Calendar.jsx";
 import UserProfile from "views/Pages/UserProfile.jsx";
 
@@ -12,9 +10,7 @@ import pagesRoutes from "./pages.jsx";
 // @material-ui/icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import Image from "@material-ui/icons/Image";
-import Apps from "@material-ui/icons/Apps";
 // import ContentPaste from "@material-ui/icons/ContentPaste";
-import GridOn from "@material-ui/icons/GridOn";
 import DateRange from "@material-ui/icons/DateRange";
 
 var pages = [
@@ -43,58 +39,28 @@ var dashRoutes = [
   },
   {
     collapse: true,
-    path: "/components",
-    name: "Components",
-    state: "openComponents",
-    icon: Apps,
-    views: [
-      {
-        path: "/components/panels",
-        name: "Panels",
-        mini: "P",
-        component: Panels
-      },
-      {
-        path: "/components/notifications",
-        name: "Notifications",
-        mini: "N",
-        component: Notifications
-      }
-    ]
-  },
-  {
-    collapse: true,
     path: "/students",
-    name: "Students",
-    state: "openForms",
+    name: "All Students",
     icon: "content_paste",
     views: [
       {
         path: "/students/new",
         name: "New Student",
-        mini: "RF",
+        mini: "NS",
         component: StudentForm
-      }
-    ]
-  },
-  {
-    collapse: true,
-    path: "/tables",
-    name: "Tables",
-    state: "openTables",
-    icon: GridOn,
-    views: [
-      {
-        path: "/tables/extended-tables",
-        name: "Extended Tables",
-        mini: "ET",
-        component: ExtendedTables
       },
       {
-        path: "/tables/react-tables",
-        name: "React Tables",
-        mini: "RT",
-        component: ReactTables
+        path: "/students/:id",
+        name: "Student",
+        mini: "S",
+        component: Student
+      },
+      {
+        path: "/students/",
+        pathTo: "/students",
+        name: "All Students",
+        mini: "AS",
+        component: Students
       }
     ]
   },
