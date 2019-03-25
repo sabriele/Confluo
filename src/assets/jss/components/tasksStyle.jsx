@@ -4,7 +4,7 @@ import {
   dangerColor,
   tooltip
 } from "assets/jss/confluo.jsx";
-import customCheckboxRadioSwitch from "assets/jss/confluo/customCheckboxRadioSwitch.jsx";
+import customCheckboxRadioSwitch from "assets/jss/customCheckboxRadioSwitch.jsx";
 
 const tasksStyle = {
   ...customCheckboxRadioSwitch,

@@ -8,7 +8,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 
 // core components
-import cardBodyStyle from "assets/jss/confluo/components/cardBodyStyle.jsx";
+import cardBodyStyle from "assets/jss/components/cardBodyStyle.jsx";
 
 function CardBody({ ...props }) {
   const {

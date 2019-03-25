@@ -23,7 +23,7 @@ import Snackbar from 'components/Snackbar/Snackbar.jsx';
 import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 
-import notificationsStyle from 'assets/jss/confluo/views/notificationsStyle.jsx';
+import notificationsStyle from 'assets/jss/views/notificationsStyle.jsx';
 
 import noticeModal1 from 'assets/img/card-1.jpeg';
 import noticeModal2 from 'assets/img/card-2.jpeg';

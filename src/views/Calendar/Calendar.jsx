@@ -16,7 +16,7 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import buttonStyle from "assets/jss/confluo/components/buttonStyle.jsx";
+import buttonStyle from "assets/jss/components/buttonStyle.jsx";
 
 import { events } from "variables/general.jsx";
 

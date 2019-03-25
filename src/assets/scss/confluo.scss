@@ -1,19 +1,19 @@
 // variables and mixins
-@import 'confluo/variables';
-@import 'confluo/mixins';
-@import 'confluo/shadows';
+@import 'variables';
+@import 'mixins';
+@import 'shadows';
 
 // plugin css
-@import 'confluo/plugins/plugin-nouislider';
-@import 'confluo/plugins/plugin-perfect-scrollbar';
-@import 'confluo/plugins/plugin-react-datetime';
-@import 'confluo/plugins/plugin-react-bootstrap-sweetalert';
-@import 'confluo/plugins/plugin-react-chartist';
-@import 'confluo/plugins/plugin-react-big-calendar';
-@import 'confluo/plugins/plugin-react-jvectormap';
-@import 'confluo/plugins/plugin-react-table';
-@import 'confluo/plugins/plugin-react-tagsinput';
+@import 'plugins/plugin-nouislider';
+@import 'plugins/plugin-perfect-scrollbar';
+@import 'plugins/plugin-react-datetime';
+@import 'plugins/plugin-react-bootstrap-sweetalert';
+@import 'plugins/plugin-react-chartist';
+@import 'plugins/plugin-react-big-calendar';
+@import 'plugins/plugin-react-jvectormap';
+@import 'plugins/plugin-react-table';
+@import 'plugins/plugin-react-tagsinput';
 
 // Core CSS
-@import 'confluo/misc';
-@import 'confluo/fileupload';
+@import 'misc';
+@import 'fileupload';

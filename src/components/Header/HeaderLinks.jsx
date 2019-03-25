@@ -19,7 +19,7 @@ import Notifications from "@material-ui/icons/Notifications";
 // core components
 import Button from "components/CustomButtons/Button.jsx";
 
-import headerLinksStyle from "assets/jss/confluo/components/headerLinksStyle";
+import headerLinksStyle from "assets/jss/components/headerLinksStyle";
 
 class HeaderLinks extends React.Component {
   state = {

@@ -15,7 +15,7 @@ import Hidden from "@material-ui/core/Hidden";
 // core components
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 
-import sidebarStyle from "assets/jss/confluo/components/sidebarStyle.jsx";
+import sidebarStyle from "assets/jss/components/sidebarStyle.jsx";
 
 import avatar from "assets/img/faces/avatar.jpg";
 

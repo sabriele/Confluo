@@ -26,7 +26,7 @@ import InfoArea from "components/InfoArea/InfoArea.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
-import registerPageStyle from "assets/jss/confluo/views/registerPageStyle";
+import registerPageStyle from "assets/jss/views/registerPageStyle";
 
 class RegisterPage extends React.Component {
   constructor(props) {
@@ -173,7 +173,6 @@ class RegisterPage extends React.Component {
                         label={
                           <span>
                             I agree to the
-
                             <a href="#pablo">terms and conditions</a>.
                           </span>
                         }

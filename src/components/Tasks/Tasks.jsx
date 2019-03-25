@@ -16,7 +16,7 @@ import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Check from "@material-ui/icons/Check";
 
-import tasksStyle from "assets/jss/confluo/components/tasksStyle.jsx";
+import tasksStyle from "assets/jss/components/tasksStyle.jsx";
 
 class Tasks extends React.Component {
   state = {

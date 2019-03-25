@@ -14,7 +14,7 @@ import Menu from "@material-ui/icons/Menu";
 import HeaderLinks from "./HeaderLinks";
 import Button from "components/CustomButtons/Button.jsx";
 
-import headerStyle from "assets/jss/confluo/components/headerStyle.jsx";
+import headerStyle from "assets/jss/components/headerStyle.jsx";
 
 function Header({ ...props }) {
   function makeBrand() {

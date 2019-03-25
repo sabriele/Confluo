@@ -14,7 +14,7 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Table from "components/Table/Table.jsx";
 
-import extendedTablesStyle from "assets/jss/confluo/views/extendedTablesStyle.jsx";
+import extendedTablesStyle from "assets/jss/views/extendedTablesStyle.jsx";
 
 class HomeworkRecords extends React.Component {
   constructor(props) {

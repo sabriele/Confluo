@@ -2,7 +2,7 @@
 // // // Buttons view styles
 // #############################
 
-import buttonGroupStyle from "assets/jss/confluo/buttonGroupStyle.jsx";
+import buttonGroupStyle from "assets/jss/buttonGroupStyle.jsx";
 
 const buttonsStyle = {
   cardTitle: {

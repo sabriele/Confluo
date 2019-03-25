@@ -2,12 +2,9 @@
 // // // HeaderLinks styles
 // #############################
 
-import {
-  defaultFont,
-  dangerColor
-} from "assets/jss/confluo.jsx";
+import { defaultFont, dangerColor } from "assets/jss/confluo.jsx";
 
-import customDropdownStyle from "assets/jss/confluo/components/customDropdownStyle.jsx";
+import customDropdownStyle from "assets/jss/components/customDropdownStyle.jsx";
 
 const headerLinksStyle = theme => ({
   ...customDropdownStyle(theme),

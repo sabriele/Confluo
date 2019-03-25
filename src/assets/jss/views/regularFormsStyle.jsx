@@ -9,8 +9,8 @@ import {
   primaryColor,
   primaryBoxShadow
 } from "assets/jss/confluo.jsx";
-import customCheckboxRadioSwitch from "assets/jss/confluo/customCheckboxRadioSwitch.jsx";
-import customSelectStyle from "assets/jss/confluo/customSelectStyle.jsx";
+import customCheckboxRadioSwitch from "assets/jss/customCheckboxRadioSwitch.jsx";
+import customSelectStyle from "assets/jss/customSelectStyle.jsx";
 
 const regularFormsStyle = {
   ...customCheckboxRadioSwitch,

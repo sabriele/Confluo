@@ -19,7 +19,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 
-import userProfileStyles from "assets/jss/confluo/views/userProfileStyles.jsx";
+import userProfileStyles from "assets/jss/views/userProfileStyles.jsx";
 
 import avatar from "assets/img/faces/avatar.jpg";
 

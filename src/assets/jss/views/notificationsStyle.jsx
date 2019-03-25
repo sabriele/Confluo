@@ -3,7 +3,7 @@
 // #############################
 
 import { defaultFont } from "assets/jss/confluo.jsx";
-import modalStyle from "assets/jss/confluo/modalStyle.jsx";
+import modalStyle from "assets/jss/modalStyle.jsx";
 
 const notificationsStyle = theme => ({
   cardTitle: {

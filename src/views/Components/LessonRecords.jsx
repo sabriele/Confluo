@@ -18,7 +18,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 
-import extendedTablesStyle from "assets/jss/confluo/views/extendedTablesStyle.jsx";
+import extendedTablesStyle from "assets/jss/views/extendedTablesStyle.jsx";
 
 class LessonRecords extends React.Component {
   constructor(props) {

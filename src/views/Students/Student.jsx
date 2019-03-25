@@ -7,7 +7,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 
-import userProfileStyles from "assets/jss/confluo/views/userProfileStyles.jsx";
+import userProfileStyles from "assets/jss/views/userProfileStyles.jsx";
 
 import Panels from "views/Components/Panels.jsx";
 import LessonRecords from "../Components/LessonRecords";

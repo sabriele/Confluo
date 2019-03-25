@@ -10,7 +10,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
-import tableStyle from "assets/jss/confluo/components/tableStyle";
+import tableStyle from "assets/jss/components/tableStyle";
 
 function CustomTable({ ...props }) {
   const {
@@ -43,8 +43,7 @@ function CustomTable({ ...props }) {
                   cx({
                     [customHeadCellClasses[
                       customHeadClassesForCells.indexOf(key)
-                    ]]:
-                      customHeadClassesForCells.indexOf(key) !== -1,
+                    ]]: customHeadClassesForCells.indexOf(key) !== -1,
                     [classes.tableShoppingHead]: tableShopping,
                     [classes.tableHeadFontSize]: !tableShopping
                   });

@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
 
-import buttonStyle from "assets/jss/confluo/components/buttonStyle.jsx";
+import buttonStyle from "assets/jss/components/buttonStyle.jsx";
 function RegularButton({ ...props }) {
   const {
     classes,

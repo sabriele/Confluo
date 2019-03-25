@@ -6,7 +6,7 @@ import cx from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
 
-import paginationStyle from "assets/jss/confluo/components/paginationStyle.jsx";
+import paginationStyle from "assets/jss/components/paginationStyle.jsx";
 
 function Pagination({ ...props }) {
   const { classes, pages, color } = props;

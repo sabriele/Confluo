@@ -1,5 +1,5 @@
-import buttonGroupStyle from "assets/jss/confluo/buttonGroupStyle.jsx";
-import customCheckboxRadioSwitch from "assets/jss/confluo/customCheckboxRadioSwitch.jsx";
+import buttonGroupStyle from "assets/jss/buttonGroupStyle.jsx";
+import customCheckboxRadioSwitch from "assets/jss/customCheckboxRadioSwitch.jsx";
 import { cardTitle } from "assets/jss/confluo.jsx";
 
 const extendedTablesStyle = {

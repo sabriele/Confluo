@@ -2,13 +2,9 @@
 // // // Dashboard View styles
 // #############################
 
-import {
-  successColor,
-  tooltip,
-  cardTitle
-} from "assets/jss/confluo.jsx";
+import { successColor, tooltip, cardTitle } from "assets/jss/confluo.jsx";
 
-import hoverCardStyle from "assets/jss/confluo/hoverCardStyle.jsx";
+import hoverCardStyle from "assets/jss/hoverCardStyle.jsx";
 
 const dashboardStyle = {
   ...hoverCardStyle,

@@ -29,7 +29,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 
-import dashboardStyle from "assets/jss/confluo/views/dashboardStyle";
+import dashboardStyle from "assets/jss/views/dashboardStyle";
 
 import { getStudents, deleteStudent } from "../../services/studentService";
 

@@ -23,7 +23,7 @@ import Button from "components/CustomButtons/Button";
 
 import pagesRoutes from "routes/pages.jsx";
 
-import pagesHeaderStyle from "assets/jss/confluo/components/pagesHeaderStyle.jsx";
+import pagesHeaderStyle from "assets/jss/components/pagesHeaderStyle.jsx";
 
 class PagesHeader extends React.Component {
   constructor(props) {

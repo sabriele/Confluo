@@ -21,7 +21,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 
-import loginPageStyle from "assets/jss/confluo/views/loginPageStyle.jsx";
+import loginPageStyle from "assets/jss/views/loginPageStyle.jsx";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -124,7 +124,7 @@ class LoginPage extends React.Component {
                 </CardBody>
                 <CardFooter className={classes.justifyContentCenter}>
                   <Button color="rose" simple size="lg" block>
-                    Let's Go
+                    {`Let's Go`}
                   </Button>
                 </CardFooter>
               </Card>

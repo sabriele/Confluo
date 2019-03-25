@@ -15,7 +15,7 @@ import Sidebar from "components/Sidebar/Sidebar.jsx";
 
 import dashboardRoutes from "routes/dashboard.jsx";
 
-import appStyle from "assets/jss/confluo/layouts/dashboardStyle.jsx";
+import appStyle from "assets/jss/layouts/dashboardStyle.jsx";
 
 import image from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/logo-white.svg";
