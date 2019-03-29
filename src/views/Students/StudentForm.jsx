@@ -37,7 +37,7 @@ class StudentForm extends React.Component {
     level: { type: "", year: "" },
     subjects: [],
     address: "",
-    regularSchedule: [{ day: "", time: "", duration: "" }],
+    schedules: [{ day: "", time: "", duration: "" }],
     rates: "",
     active: true,
     startDate: "",
@@ -82,17 +82,17 @@ class StudentForm extends React.Component {
   };
 
   handleSchedule = event => {
-    const regularSchedule = cloneDeep(this.state.regularSchedule);
-    const schedule = regularSchedule[0];
+    const schedules = cloneDeep(this.state.schedules);
+    const schedule = schedules[0];
     schedule[event.target.name] = event.target.value;
-    this.setState({ regularSchedule });
+    this.setState({ schedules });
   };
 
   handleTime = time => {
-    const { regularSchedule } = this.state;
-    const schedule = regularSchedule[0];
+    const { schedules } = this.state;
+    const schedule = schedules[0];
     schedule.time = time._d.toString();
-    this.setState({ regularSchedule });
+    this.setState({ schedules });
   };
 
   handleStartDate = date => {
@@ -439,96 +439,96 @@ class StudentForm extends React.Component {
                     <GridContainer>
                       <GridItem xs={12} sm={12} md={4}>
                         <GridItem xs={12}>
-                        <FormControl
-                          fullWidth
-                          className={classes.selectFormControl}
-                        >
-                          <InputLabel
-                            htmlFor="day-select"
-                            className={classes.selectLabel}
+                          <FormControl
+                            fullWidth
+                            className={classes.selectFormControl}
                           >
-                            Day
-                          </InputLabel>
-                          <Select
-                            MenuProps={{
-                              className: classes.selectMenu
-                            }}
-                            classes={{
-                              select: classes.select
-                            }}
-                            value={this.state.regularSchedule[0].day}
-                            onChange={this.handleSchedule}
-                            inputProps={{
-                              name: "day",
-                              id: "day-select"
-                            }}
-                          >
-                            <MenuItem
-                              classes={{
-                                root: classes.selectMenuItem,
-                                selected: classes.selectMenuItemSelected
-                              }}
-                              value="Sunday"
+                            <InputLabel
+                              htmlFor="day-select"
+                              className={classes.selectLabel}
                             >
-                              Sunday
-                            </MenuItem>
-                            <MenuItem
-                              classes={{
-                                root: classes.selectMenuItem,
-                                selected: classes.selectMenuItemSelected
+                              Day
+                            </InputLabel>
+                            <Select
+                              MenuProps={{
+                                className: classes.selectMenu
                               }}
-                              value="Monday"
-                            >
-                              Monday
-                            </MenuItem>
-                            <MenuItem
                               classes={{
-                                root: classes.selectMenuItem,
-                                selected: classes.selectMenuItemSelected
+                                select: classes.select
                               }}
-                              value="Tuesday"
-                            >
-                              Tuesday
-                            </MenuItem>
-                            <MenuItem
-                              classes={{
-                                root: classes.selectMenuItem,
-                                selected: classes.selectMenuItemSelected
+                              value={this.state.schedules[0].day}
+                              onChange={this.handleSchedule}
+                              inputProps={{
+                                name: "day",
+                                id: "day-select"
                               }}
-                              value="Wednesday"
                             >
-                              Wednesday
-                            </MenuItem>
-                            <MenuItem
-                              classes={{
-                                root: classes.selectMenuItem,
-                                selected: classes.selectMenuItemSelected
-                              }}
-                              value="Thursday"
-                            >
-                              Thursday
-                            </MenuItem>
-                            <MenuItem
-                              classes={{
-                                root: classes.selectMenuItem,
-                                selected: classes.selectMenuItemSelected
-                              }}
-                              value="Friday"
-                            >
-                              Friday
-                            </MenuItem>
-                            <MenuItem
-                              classes={{
-                                root: classes.selectMenuItem,
-                                selected: classes.selectMenuItemSelected
-                              }}
-                              value="Saturday"
-                            >
-                              Saturday
-                            </MenuItem>
-                          </Select>
-                        </FormControl>
-                      </GridItem>
+                              <MenuItem
+                                classes={{
+                                  root: classes.selectMenuItem,
+                                  selected: classes.selectMenuItemSelected
+                                }}
+                                value="Sunday"
+                              >
+                                Sunday
+                              </MenuItem>
+                              <MenuItem
+                                classes={{
+                                  root: classes.selectMenuItem,
+                                  selected: classes.selectMenuItemSelected
+                                }}
+                                value="Monday"
+                              >
+                                Monday
+                              </MenuItem>
+                              <MenuItem
+                                classes={{
+                                  root: classes.selectMenuItem,
+                                  selected: classes.selectMenuItemSelected
+                                }}
+                                value="Tuesday"
+                              >
+                                Tuesday
+                              </MenuItem>
+                              <MenuItem
+                                classes={{
+                                  root: classes.selectMenuItem,
+                                  selected: classes.selectMenuItemSelected
+                                }}
+                                value="Wednesday"
+                              >
+                                Wednesday
+                              </MenuItem>
+                              <MenuItem
+                                classes={{
+                                  root: classes.selectMenuItem,
+                                  selected: classes.selectMenuItemSelected
+                                }}
+                                value="Thursday"
+                              >
+                                Thursday
+                              </MenuItem>
+                              <MenuItem
+                                classes={{
+                                  root: classes.selectMenuItem,
+                                  selected: classes.selectMenuItemSelected
+                                }}
+                                value="Friday"
+                              >
+                                Friday
+                              </MenuItem>
+                              <MenuItem
+                                classes={{
+                                  root: classes.selectMenuItem,
+                                  selected: classes.selectMenuItemSelected
+                                }}
+                                value="Saturday"
+                              >
+                                Saturday
+                              </MenuItem>
+                            </Select>
+                          </FormControl>
+                        </GridItem>
                       </GridItem>
                       <GridItem xs={12} sm={12} md={4}>
                         <FormControl fullWidth style={{ marginTop: "24px" }}>

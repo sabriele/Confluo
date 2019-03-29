@@ -215,7 +215,7 @@ class Dashboard extends React.Component {
                             </h6>
                           </div>
                           <ul>
-                            {student.regularSchedule.map((schedule, i) => [
+                            {student.schedules.map((schedule, i) => [
                               <li key={i}>
                                 {schedule.day},{" "}
                                 {moment(schedule.time).format("hA")} for{" "}

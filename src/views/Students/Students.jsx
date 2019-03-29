@@ -44,7 +44,7 @@ class Students extends React.Component {
             i > 0 && ", ",
             <span key={i}>{subject}</span>
           ]),
-          regularSchedule: student.regularSchedule.map((schedule, i) => [
+          schedules: student.schedules.map((schedule, i) => [
             <p key={i}>
               {schedule.day}, {moment(schedule.time).format("hA")}
             </p>
@@ -120,7 +120,7 @@ class Students extends React.Component {
                   },
                   {
                     Header: "Schedule",
-                    accessor: "regularSchedule"
+                    accessor: "schedules"
                   },
                   {
                     Header: "Rates",

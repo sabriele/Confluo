@@ -154,18 +154,16 @@ class Panels extends React.Component {
                             <GridItem xs={12} lg={10}>
                               <h6>
                                 <ul style={{ padding: "0" }}>
-                                  {student.regularSchedule.map(
-                                    (schedule, i) => [
-                                      <li key={i} style={{ listStyle: "none" }}>
-                                        {schedule.day},{" "}
-                                        {moment(schedule.time).format("hA")} for{" "}
-                                        {schedule.duration}{" "}
-                                        {schedule.duration === 1
-                                          ? "hour"
-                                          : "hours"}
-                                      </li>
-                                    ]
-                                  )}
+                                  {student.schedules.map((schedule, i) => [
+                                    <li key={i} style={{ listStyle: "none" }}>
+                                      {schedule.day},{" "}
+                                      {moment(schedule.time).format("hA")} for{" "}
+                                      {schedule.duration}{" "}
+                                      {schedule.duration === 1
+                                        ? "hour"
+                                        : "hours"}
+                                    </li>
+                                  ])}
                                 </ul>
                               </h6>
                             </GridItem>

@@ -8,7 +8,7 @@ let students = [
     level: { type: "Primary", year: 3 },
     subjects: ["Mathematics"],
     address: "7 Lavender Avenue North",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Sunday",
@@ -32,7 +32,7 @@ let students = [
     level: { type: "Secondary", year: 1 },
     subjects: ["Science"],
     address: "6 Bukit Ho Swee Walk, #04-30",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Wednesday",
@@ -55,7 +55,7 @@ let students = [
     level: { type: "Primary", year: 6 },
     subjects: ["Science", "Mathematics"],
     address: "2 MacPherson Lane",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Tuesday",
@@ -84,7 +84,7 @@ let students = [
     level: { type: "Primary", year: 4 },
     subjects: ["Science"],
     address: "6 Bukit Ho Swee Walk, #04-30",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Wednesday",
@@ -107,7 +107,7 @@ let students = [
     level: { type: "Primary", year: 1 },
     subjects: ["English"],
     address: "Blk 204 Boon Lay Street 81, #10-41",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Thursday",
@@ -130,7 +130,7 @@ let students = [
     level: { type: "Primary", year: 6 },
     subjects: ["Mathematics"],
     address: "2 MacPherson Lane",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Tuesday",
@@ -153,7 +153,7 @@ let students = [
     level: { type: "Primary", year: 6 },
     subjects: ["Mathematics"],
     address: "2 MacPherson Lane",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Tuesday",
@@ -176,7 +176,7 @@ let students = [
     level: { type: "Primary", year: "3" },
     subjects: ["Mathematics"],
     address: "Blk 408 Sengkang Street 76, #15-36",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Saturday",
@@ -199,7 +199,7 @@ let students = [
     level: { type: "Primary", year: "5" },
     subjects: ["Mathematics"],
     address: "24 Jalan Pelangi",
-    regularSchedule: [
+    schedules: [
       {
         _id: 0,
         day: "Monday",
@@ -222,7 +222,7 @@ let students = [
     level: { type: "Primary", year: "4" },
     subjects: ["Mathematics"],
     address: "30 Tai Seng Field, #08-11",
-    regularSchedule: [
+    schedules: [
       {
         day: "Monday",
         time: "Fri Mar 08 2019 19:00:00 GMT+0800 (Singapore Standard Time)",
