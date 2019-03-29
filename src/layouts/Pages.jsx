@@ -8,7 +8,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import PagesHeader from "components/Header/PagesHeader.jsx";
 
-import pagesRoutes from "routes/pages.jsx";
+import authRoutes from "routes/auth.jsx";
 
 import pagesStyle from "assets/jss/layouts/pagesStyle.jsx";
 
@@ -29,7 +29,7 @@ class Pages extends React.Component {
             style={{ backgroundImage: "url(" + bgImage + ")" }}
           >
             <Switch>
-              {pagesRoutes.map((prop, key) => {
+              {authRoutes.map((prop, key) => {
                 if (prop.collapse) {
                   return null;
                 }

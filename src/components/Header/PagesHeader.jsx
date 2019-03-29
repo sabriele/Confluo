@@ -1,6 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 // @material-ui/core components
@@ -15,13 +14,12 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
 // @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
 import Menu from "@material-ui/icons/Menu";
 
 // core components
 import Button from "components/CustomButtons/Button";
 
-import pagesRoutes from "routes/pages.jsx";
+import authRoutes from "routes/auth.jsx";
 
 import pagesHeaderStyle from "assets/jss/components/pagesHeaderStyle.jsx";
 
@@ -35,7 +33,6 @@ class PagesHeader extends React.Component {
   handleDrawerToggle = () => {
     this.setState({ open: !this.state.open });
   };
-  // verifies if routeName is the one active (in browser input)
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
   }
@@ -51,19 +48,7 @@ class PagesHeader extends React.Component {
     });
     var list = (
       <List className={classes.list}>
-        <ListItem className={classes.listItem}>
-          <NavLink to={"/dashboard"} className={classes.navLink}>
-            <ListItemIcon className={classes.listItemIcon}>
-              <Dashboard />
-            </ListItemIcon>
-            <ListItemText
-              primary={"Dashboard"}
-              disableTypography={true}
-              className={classes.listItemText}
-            />
-          </NavLink>
-        </ListItem>
-        {pagesRoutes.map((prop, key) => {
+        {authRoutes.map((prop, key) => {
           if (prop.redirect) {
             return null;
           }
@@ -95,14 +80,14 @@ class PagesHeader extends React.Component {
           <Hidden smDown>
             <div className={classes.flex}>
               <Button href="#" className={classes.title} color="transparent">
-                Material Dashboard Pro React
+                Confluo
               </Button>
             </div>
           </Hidden>
           <Hidden mdUp>
             <div className={classes.flex}>
               <Button href="#" className={classes.title} color="transparent">
-                MD Pro React
+                Confluo
               </Button>
             </div>
           </Hidden>
@@ -129,7 +114,7 @@ class PagesHeader extends React.Component {
                 }}
                 onClose={this.handleDrawerToggle}
                 ModalProps={{
-                  keepMounted: true // Better open performance on mobile.
+                  keepMounted: true
                 }}
               >
                 {list}
@@ -141,10 +126,5 @@ class PagesHeader extends React.Component {
     );
   }
 }
-
-PagesHeader.propTypes = {
-  classes: PropTypes.object.isRequired,
-  color: PropTypes.oneOf(["primary", "info", "success", "warning", "danger"])
-};
 
 export default withStyles(pagesHeaderStyle)(PagesHeader);

@@ -2,10 +2,7 @@
 // // // LockScreenPage view styles
 // #############################
 
-import {
-  cardTitle,
-  container
-} from "assets/jss/confluo.jsx";
+import { cardTitle, container } from "assets/jss/confluo.jsx";
 
 const lockScreenPageStyle = theme => ({
   cardTitle,

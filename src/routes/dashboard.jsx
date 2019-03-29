@@ -3,9 +3,9 @@ import StudentForm from "views/Students/StudentForm.jsx";
 import Students from "views/Students/Students.jsx";
 import Student from "views/Students/Student.jsx";
 import Calendar from "views/Calendar/Calendar.jsx";
-import UserProfile from "views/Pages/UserProfile.jsx";
+import UserProfile from "views/Auth/UserProfile.jsx";
 
-import pagesRoutes from "./pages.jsx";
+import authRoutes from "./auth.jsx";
 
 // @material-ui/icons
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -20,7 +20,7 @@ var pages = [
     mini: "UP",
     component: UserProfile
   }
-].concat(pagesRoutes);
+].concat(authRoutes);
 
 var dashRoutes = [
   {

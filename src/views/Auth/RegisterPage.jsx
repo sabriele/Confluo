@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -21,18 +20,16 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 
-import loginPageStyle from "assets/jss/views/loginPageStyle.jsx";
+import registerPageStyle from "assets/jss/views/registerPageStyle.jsx";
 
-class LoginPage extends React.Component {
+class RegisterPage extends React.Component {
   constructor(props) {
     super(props);
-    // we use this to make the card to appear after the page has been rendered
     this.state = {
       cardAnimaton: "cardHidden"
     };
   }
   componentDidMount() {
-    // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     this.timeOutFunction = setTimeout(
       function() {
         this.setState({ cardAnimaton: "" });
@@ -54,45 +51,45 @@ class LoginPage extends React.Component {
               <Card login className={classes[this.state.cardAnimaton]}>
                 <CardHeader
                   className={`${classes.cardHeader} ${classes.textCenter}`}
-                  color="rose"
+                  color="info"
                 >
-                  <h4 className={classes.cardTitle}>Log in</h4>
-                  <div className={classes.socialLine}>
-                    {[
-                      "fab fa-facebook-square",
-                      "fab fa-twitter",
-                      "fab fa-google-plus"
-                    ].map((prop, key) => {
-                      return (
-                        <Button
-                          color="transparent"
-                          justIcon
-                          key={key}
-                          className={classes.customButtonClass}
-                        >
-                          <i className={prop} />
-                        </Button>
-                      );
-                    })}
-                  </div>
+                  <h2
+                    className={classes.cardTitle}
+                    style={{ margin: "25px 0 35px 0" }}
+                  >
+                    Register
+                  </h2>
                 </CardHeader>
                 <CardBody>
+                  <GridContainer justify="center">
+                    <GridItem xs={12} md={6}>
+                      <CustomInput
+                        labelText="First Name"
+                        id="firstName"
+                        formControlProps={{
+                          fullWidth: true
+                        }}
+                      />
+                    </GridItem>
+                    <GridItem xs={12} md={6}>
+                      <CustomInput
+                        labelText="Last Name"
+                        id="lastName"
+                        formControlProps={{
+                          fullWidth: true
+                        }}
+                        inputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <Face className={classes.inputAdornmentIcon} />
+                            </InputAdornment>
+                          )
+                        }}
+                      />
+                    </GridItem>
+                  </GridContainer>
                   <CustomInput
-                    labelText="First Name.."
-                    id="firstname"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <Face className={classes.inputAdornmentIcon} />
-                        </InputAdornment>
-                      )
-                    }}
-                  />
-                  <CustomInput
-                    labelText="Email..."
+                    labelText="Email"
                     id="email"
                     formControlProps={{
                       fullWidth: true
@@ -123,8 +120,8 @@ class LoginPage extends React.Component {
                   />
                 </CardBody>
                 <CardFooter className={classes.justifyContentCenter}>
-                  <Button color="rose" simple size="lg" block>
-                    {`Let's Go`}
+                  <Button color="info" round style={{ marginBottom: "30px" }}>
+                    Register
                   </Button>
                 </CardFooter>
               </Card>
@@ -136,8 +133,4 @@ class LoginPage extends React.Component {
   }
 }
 
-LoginPage.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(loginPageStyle)(LoginPage);
+export default withStyles(registerPageStyle)(RegisterPage);

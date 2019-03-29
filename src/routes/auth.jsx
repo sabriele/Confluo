@@ -1,13 +1,13 @@
-import LoginPage from "views/Pages/LoginPage.jsx";
-import RegisterPage from "views/Pages/RegisterPage.jsx";
+import LoginPage from "views/Auth/LoginPage.jsx";
+import RegisterPage from "views/Auth/RegisterPage.jsx";
 
 // @material-ui/icons
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import Fingerprint from "@material-ui/icons/Fingerprint";
 
-const pagesRoutes = [
+const authRoutes = [
   {
-    path: "/pages/register-page",
+    path: "/user/register",
     name: "Register Page",
     short: "Register",
     mini: "RP",
@@ -15,19 +15,13 @@ const pagesRoutes = [
     component: RegisterPage
   },
   {
-    path: "/pages/login-page",
+    path: "/user/login",
     name: "Login Page",
     short: "Login",
     mini: "LP",
     icon: Fingerprint,
     component: LoginPage
-  },
-  {
-    redirect: true,
-    path: "/pages",
-    pathTo: "/pages/register-page",
-    name: "Register Page"
   }
 ];
 
-export default pagesRoutes;
+export default authRoutes;
