@@ -20,6 +20,7 @@ module.exports = {
   ],
   rules: {
     "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
+    "no-console": ["warn", { allow: ["warn", "error", "info"] }],
     "react/no-string-refs": [0],
     "react/prop-types": [0]
   }

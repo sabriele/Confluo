@@ -22,32 +22,70 @@ import CardFooter from "components/Card/CardFooter.jsx";
 
 import registerPageStyle from "assets/jss/views/registerPageStyle.jsx";
 
+const isDev = process.env.NODE_ENV !== "production";
+const url = isDev
+  ? "http://localhost:3001"
+  : "https://confluo-api.herokuapp.com";
+
 class RegisterPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cardAnimaton: "cardHidden"
-    };
-  }
+  state = {
+    cardAnimaton: "cardHidden",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  };
+
   componentDidMount() {
     this.timeOutFunction = setTimeout(
       function() {
-        this.setState({ cardAnimaton: "" });
+        this.setState({ cardAnimaton: "cardSignup" });
       }.bind(this),
-      700
+      100
     );
   }
+
   componentWillUnmount() {
     clearTimeout(this.timeOutFunction);
     this.timeOutFunction = null;
   }
+
+  handleInputChange = event => {
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    fetch(`${url}/register`, {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => {
+        if (res.status === 201) {
+          this.props.history.push("/user/login");
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(() => {
+        console.error("Error while registering");
+      });
+  };
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={6} md={4}>
-            <form>
+            <form onSubmit={this.onSubmit}>
               <Card login className={classes[this.state.cardAnimaton]}>
                 <CardHeader
                   className={`${classes.cardHeader} ${classes.textCenter}`}
@@ -69,6 +107,12 @@ class RegisterPage extends React.Component {
                         formControlProps={{
                           fullWidth: true
                         }}
+                        inputProps={{
+                          type: "firstName",
+                          name: "firstName",
+                          value: this.state.firstName,
+                          onChange: this.handleInputChange
+                        }}
                       />
                     </GridItem>
                     <GridItem xs={12} md={6}>
@@ -83,7 +127,11 @@ class RegisterPage extends React.Component {
                             <InputAdornment position="end">
                               <Face className={classes.inputAdornmentIcon} />
                             </InputAdornment>
-                          )
+                          ),
+                          type: "lastName",
+                          name: "lastName",
+                          value: this.state.lastName,
+                          onChange: this.handleInputChange
                         }}
                       />
                     </GridItem>
@@ -99,7 +147,12 @@ class RegisterPage extends React.Component {
                         <InputAdornment position="end">
                           <Email className={classes.inputAdornmentIcon} />
                         </InputAdornment>
-                      )
+                      ),
+                      type: "email",
+                      name: "email",
+                      value: this.state.email,
+                      onChange: this.handleInputChange,
+                      required: true
                     }}
                   />
                   <CustomInput
@@ -115,12 +168,22 @@ class RegisterPage extends React.Component {
                             lock_outline
                           </Icon>
                         </InputAdornment>
-                      )
+                      ),
+                      type: "password",
+                      name: "password",
+                      value: this.state.password,
+                      onChange: this.handleInputChange,
+                      required: true
                     }}
                   />
                 </CardBody>
                 <CardFooter className={classes.justifyContentCenter}>
-                  <Button color="info" round style={{ marginBottom: "30px" }}>
+                  <Button
+                    type="submit"
+                    color="info"
+                    round
+                    style={{ marginBottom: "30px" }}
+                  >
                     Register
                   </Button>
                 </CardFooter>

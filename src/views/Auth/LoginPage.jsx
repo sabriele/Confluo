@@ -18,41 +18,73 @@ import CardBody from "components/Card/CardBody.jsx";
 
 import loginPageStyle from "assets/jss/views/loginPageStyle";
 
+const isDev = process.env.NODE_ENV !== "production";
+const url = isDev
+  ? "http://localhost:3001"
+  : "https://confluo-api.herokuapp.com";
+
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: []
-    };
-    this.handleToggle = this.handleToggle.bind(this);
+  state = {
+    cardAnimaton: "cardHidden",
+
+    email: "",
+    password: ""
+  };
+
+  componentDidMount() {
+    this.timeOutFunction = setTimeout(
+      function() {
+        this.setState({ cardAnimaton: "cardSignup" });
+      }.bind(this),
+      100
+    );
   }
-  handleToggle(value) {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  componentWillUnmount() {
+    clearTimeout(this.timeOutFunction);
+    this.timeOutFunction = null;
+  }
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
+  handleInputChange = event => {
+    const { value, name } = event.target;
     this.setState({
-      checked: newChecked
+      [name]: value
     });
-  }
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    fetch(`${url}/login`, {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => {
+        if (res.status === 200) {
+          this.props.history.push("/dashboard");
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(() => {
+        console.error("Username or password does not exist");
+      });
+  };
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={5}>
-            <Card className={classes.cardSignup}>
+            <Card login className={classes[this.state.cardAnimaton]}>
               <h2 className={classes.cardTitle}>Log In</h2>
               <CardBody>
                 <GridContainer justify="center">
                   <GridItem xs={12} sm={10} md={10}>
-                    <form className={classes.form}>
+                    <form onSubmit={this.onSubmit} className={classes.form}>
                       <CustomInput
                         formControlProps={{
                           fullWidth: true,
@@ -67,7 +99,12 @@ class LoginPage extends React.Component {
                               <Email className={classes.inputAdornmentIcon} />
                             </InputAdornment>
                           ),
-                          placeholder: "Email..."
+                          placeholder: "Email...",
+                          type: "email",
+                          name: "email",
+                          value: this.state.email,
+                          onChange: this.handleInputChange,
+                          required: true
                         }}
                       />
                       <CustomInput
@@ -86,14 +123,19 @@ class LoginPage extends React.Component {
                               </Icon>
                             </InputAdornment>
                           ),
-                          placeholder: "Password..."
+                          placeholder: "Password...",
+                          type: "password",
+                          name: "password",
+                          value: this.state.password,
+                          onChange: this.handleInputChange,
+                          required: true
                         }}
                       />
                       <div
                         className={classes.center}
                         style={{ paddingTop: "50px" }}
                       >
-                        <Button round color="linkedin">
+                        <Button type="submit" round color="linkedin">
                           {`Let's go!`}
                         </Button>
                       </div>

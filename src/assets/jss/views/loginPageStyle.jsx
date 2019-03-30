@@ -58,6 +58,10 @@ const loginPageStyle = {
   checkboxLabel: {
     marginLeft: "6px",
     color: "rgba(0, 0, 0, 0.26)"
+  },
+  cardHidden: {
+    opacity: "0",
+    transform: "translate3d(0, -60px, 0)"
   }
 };
 
