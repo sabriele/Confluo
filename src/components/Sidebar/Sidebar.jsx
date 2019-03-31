@@ -19,9 +19,12 @@ import sidebarStyle from "assets/jss/components/sidebarStyle.jsx";
 
 import avatar from "assets/img/faces/avatar.jpg";
 
-import { getStudents } from "../../services/studentService";
-
 var ps;
+
+const isDev = process.env.NODE_ENV !== "production";
+const url = isDev
+  ? "http://localhost:3001"
+  : "https://confluo-api.herokuapp.com";
 
 class SidebarWrapper extends React.Component {
   componentDidMount() {
@@ -50,24 +53,25 @@ class SidebarWrapper extends React.Component {
 }
 
 class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      openAvatar: false,
-      openComponents: this.activeRoute("/components"),
-      openForms: this.activeRoute("/forms"),
-      openTables: this.activeRoute("/tables"),
-      openMaps: this.activeRoute("/maps"),
-      openPages: this.activeRoute("-page"),
-      miniActive: true,
-      students: []
-    };
-    this.activeRoute.bind(this);
-  }
-  componentDidMount = () => {
-    this.setState({ students: getStudents() });
+  state = {
+    openAvatar: false,
+    openComponents: this.activeRoute("/components"),
+    openForms: this.activeRoute("/forms"),
+    openTables: this.activeRoute("/tables"),
+    openMaps: this.activeRoute("/maps"),
+    openPages: this.activeRoute("-page"),
+    miniActive: true,
+    students: []
   };
-  // verifies if routeName is the one active (in browser input)
+
+  componentDidMount() {
+    fetch(`${url}/students`, {
+      method: "GET",
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(students => this.setState({ students }));
+  }
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
   }
@@ -193,7 +197,7 @@ class Sidebar extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.item + " " + classes.userItem}>
                     <NavLink
-                      to={`/students/${student._id}`}
+                      to={`/students/${student.id}`}
                       className={
                         classes.itemLink + " " + classes.userCollapseButton
                       }

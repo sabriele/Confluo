@@ -26,7 +26,6 @@ const url = isDev
 class LoginPage extends React.Component {
   state = {
     cardAnimaton: "cardHidden",
-
     email: "",
     password: ""
   };
@@ -46,9 +45,7 @@ class LoginPage extends React.Component {
 
   handleInputChange = event => {
     const { value, name } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   onSubmit = event => {
@@ -56,14 +53,12 @@ class LoginPage extends React.Component {
     fetch(`${url}/login`, {
       method: "POST",
       body: JSON.stringify(this.state),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      headers: { "Content-Type": "application/json" },
+      credentials: "include"
     })
       .then(res => {
-        if (res.status === 200) {
-          this.props.history.push("/dashboard");
-        } else {
+        if (res.status === 200) return this.props.history.push("/dashboard");
+        else {
           const error = new Error(res.error);
           throw error;
         }

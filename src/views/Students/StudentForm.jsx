@@ -29,7 +29,7 @@ import regularFormsStyle from "assets/jss/views/regularFormsStyle";
 
 class StudentForm extends React.Component {
   state = {
-    _id: "",
+    id: "",
     email: "",
     firstName: "",
     lastName: "",

@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { withRouter } from "react-router-dom";
 // import { Manager, Target, Popper } from "react-popper";
 
 // @material-ui/core components
@@ -21,19 +22,49 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import headerLinksStyle from "assets/jss/components/headerLinksStyle";
 
+const isDev = process.env.NODE_ENV !== "production";
+const url = isDev
+  ? "http://localhost:3001"
+  : "https://confluo-api.herokuapp.com";
+
 class HeaderLinks extends React.Component {
   state = {
-    open: false
+    notificationsOpen: false,
+    userMenuOpen: false
   };
-  handleClick = () => {
-    this.setState({ open: !this.state.open });
+  handleNotificationsClick = () => {
+    this.setState({ notificationsOpen: !this.state.notificationsOpen });
   };
-  handleClose = () => {
-    this.setState({ open: false });
+  handleNotificationsClose = () => {
+    this.setState({ notificationsOpen: false });
+  };
+  handleUserMenuClick = () => {
+    this.setState({ userMenuOpen: !this.state.userMenuOpen });
+  };
+  handleUserMenuClose = () => {
+    this.setState({ userMenuOpen: false });
+  };
+  handleLogout = () => {
+    fetch(`${url}/logout`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include"
+    })
+      .then(res => {
+        if (res.status === 200) return this.props.history.push("/user/login");
+        else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        console.error("Error logging out");
+      });
   };
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { notificationsOpen, userMenuOpen } = this.state;
     const dropdownItem = classNames(classes.dropdownItem, classes.primaryHover);
     const managerClasses = classNames({
       [classes.managerClasses]: true
@@ -45,9 +76,9 @@ class HeaderLinks extends React.Component {
             color="transparent"
             justIcon
             aria-label="Notifications"
-            aria-owns={open ? "menu-list" : null}
+            aria-owns={notificationsOpen ? "notifications-menu-list" : null}
             aria-haspopup="true"
-            onClick={this.handleClick}
+            onClick={this.handleNotificationsClick}
             className={classes.buttonLink}
             muiClasses={{
               label: ""
@@ -61,19 +92,22 @@ class HeaderLinks extends React.Component {
             />
             <span className={classes.notifications}>5</span>
             <Hidden mdUp implementation="css">
-              <span onClick={this.handleClick} className={classes.linkText}>
+              <span
+                onClick={this.handleNotificationsClick}
+                className={classes.linkText}
+              >
                 {"Notification"}
               </span>
             </Hidden>
           </Button>
           <Popper
-            open={open}
+            open={notificationsOpen}
             anchorEl={this.anchorEl}
             transition
             disablePortal
             placement="bottom"
             className={classNames({
-              [classes.popperClose]: !open,
+              [classes.popperClose]: !notificationsOpen,
               [classes.pooperResponsive]: true,
               [classes.pooperNav]: true
             })}
@@ -81,38 +115,40 @@ class HeaderLinks extends React.Component {
             {({ TransitionProps }) => (
               <Grow
                 {...TransitionProps}
-                id="menu-list"
+                id="notifications-menu-list"
                 style={{ transformOrigin: "0 0 0" }}
               >
                 <Paper className={classes.dropdown}>
-                  <ClickAwayListener onClickAway={this.handleClose}>
+                  <ClickAwayListener
+                    onClickAway={this.handleNotificationsClose}
+                  >
                     <MenuList role="menu">
                       <MenuItem
-                        onClick={this.handleClose}
+                        onClick={this.handleNotificationsClose}
                         className={dropdownItem}
                       >
                         {"New student Andrea Lee first lesson: 18th March"}
                       </MenuItem>
                       <MenuItem
-                        onClick={this.handleClose}
+                        onClick={this.handleNotificationsClose}
                         className={dropdownItem}
                       >
                         {"Ben Ang would like to cancel lesson on 30th March"}
                       </MenuItem>
                       <MenuItem
-                        onClick={this.handleClose}
+                        onClick={this.handleNotificationsClose}
                         className={dropdownItem}
                       >
                         {"Farid Bakar has made payment for 4 lessons"}
                       </MenuItem>
                       <MenuItem
-                        onClick={this.handleClose}
+                        onClick={this.handleNotificationsClose}
                         className={dropdownItem}
                       >
                         {"Farida Bakar has made payment for 4 lessons"}
                       </MenuItem>
                       <MenuItem
-                        onClick={this.handleClose}
+                        onClick={this.handleNotificationsClose}
                         className={dropdownItem}
                       >
                         {
@@ -125,24 +161,68 @@ class HeaderLinks extends React.Component {
               </Grow>
             )}
           </Popper>
+          <Button
+            color="transparent"
+            justIcon
+            aria-label="Person"
+            aria-owns={userMenuOpen ? "user-menu-list" : null}
+            aria-haspopup="true"
+            onClick={this.handleUserMenuClick}
+            className={classes.buttonLink}
+            muiClasses={{
+              label: ""
+            }}
+            buttonRef={node => {
+              this.anchorEl = node;
+            }}
+          >
+            <Person className={classes.headerLinksSvg + " " + classes.links} />
+            <Hidden mdUp implementation="css">
+              <span
+                onClick={this.handleUserMenuClick}
+                className={classes.linkText}
+              >
+                {"Notification"}
+              </span>
+            </Hidden>
+          </Button>
+          <Popper
+            open={userMenuOpen}
+            anchorEl={this.anchorEl}
+            transition
+            disablePortal
+            placement="bottom"
+            className={classNames({
+              [classes.popperClose]: !userMenuOpen,
+              [classes.pooperResponsive]: true,
+              [classes.pooperNav]: true
+            })}
+          >
+            {({ TransitionProps }) => (
+              <Grow
+                {...TransitionProps}
+                id="user-menu-list"
+                style={{ transformOrigin: "0 0 0" }}
+              >
+                <Paper className={classes.dropdown}>
+                  <ClickAwayListener onClickAway={this.handleUserMenuClose}>
+                    <MenuList role="menu">
+                      <MenuItem
+                        onClick={this.handleLogout}
+                        className={dropdownItem}
+                      >
+                        Logout
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
         </div>
-        <Button
-          color="transparent"
-          aria-label="Person"
-          justIcon
-          className={classes.buttonLink}
-          muiClasses={{
-            label: ""
-          }}
-        >
-          <Person className={classes.headerLinksSvg + " " + classes.links} />
-          <Hidden mdUp implementation="css">
-            <span className={classes.linkText}>{"Profile"}</span>
-          </Hidden>
-        </Button>
       </div>
     );
   }
 }
 
-export default withStyles(headerLinksStyle)(HeaderLinks);
+export default withRouter(withStyles(headerLinksStyle)(HeaderLinks));

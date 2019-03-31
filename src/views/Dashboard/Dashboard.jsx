@@ -31,24 +31,43 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import dashboardStyle from "assets/jss/views/dashboardStyle";
 
-import { getStudents, deleteStudent } from "../../services/studentService";
-
 var moment = require("moment");
+
+const isDev = process.env.NODE_ENV !== "production";
+const url = isDev
+  ? "http://localhost:3001"
+  : "https://confluo-api.herokuapp.com";
 
 class Dashboard extends React.Component {
   state = {
     value: 0,
     students: []
   };
-  componentDidMount = () => {
-    this.setState({ students: getStudents() });
-  };
-
+  componentDidMount() {
+    fetch(`${url}/students`, {
+      method: "GET",
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(students => this.setState({ students }));
+  }
   handleChange = (event, value) => {
     this.setState({ value });
   };
   handleChangeIndex = index => {
     this.setState({ value: index });
+  };
+  handleDelete = async id => {
+    await fetch(`${url}/students/${id}`, {
+      method: "DELETE",
+      credentials: "include"
+    });
+    const res = await fetch(`${url}/students`, {
+      method: "GET",
+      credentials: "include"
+    });
+    const students = await res.json();
+    this.setState({ students });
   };
   render() {
     const { classes } = this.props;
@@ -192,11 +211,7 @@ class Dashboard extends React.Component {
                                 color="danger"
                                 simple
                                 justIcon
-                                onClick={() => {
-                                  deleteStudent();
-                                  students.splice(i, 1);
-                                  this.setState({ students });
-                                }}
+                                onClick={() => this.handleDelete(student.id)}
                               >
                                 <Clear className={classes.underChartIcons} />
                               </Button>
@@ -240,7 +255,7 @@ class Dashboard extends React.Component {
                             color="transparent"
                             simple
                             component={Link}
-                            to={`/students/${student._id}`}
+                            to={`/students/${student.id}`}
                             style={{ padding: "12px 0px" }}
                           >
                             View »

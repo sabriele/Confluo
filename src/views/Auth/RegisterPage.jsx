@@ -62,9 +62,8 @@ class RegisterPage extends React.Component {
     fetch(`${url}/register`, {
       method: "POST",
       body: JSON.stringify(this.state),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      headers: { "Content-Type": "application/json" },
+      credentials: "include"
     })
       .then(res => {
         if (res.status === 201) {

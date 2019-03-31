@@ -3,7 +3,7 @@ import StudentForm from "views/Students/StudentForm.jsx";
 import Students from "views/Students/Students.jsx";
 import Student from "views/Students/Student.jsx";
 import Calendar from "views/Calendar/Calendar.jsx";
-import UserProfile from "views/Auth/UserProfile.jsx";
+import UserProfile from "views/UserProfile.jsx";
 
 import authRoutes from "./auth.jsx";
 
