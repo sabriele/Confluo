@@ -48,22 +48,6 @@ class StudentForm extends React.Component {
     notes: ""
   };
 
-  handleToggle(value) {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    this.setState({
-      checked: newChecked
-    });
-  }
-
   handleCustomInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -346,7 +330,7 @@ class StudentForm extends React.Component {
                                 root: classes.selectMenuItem,
                                 selected: classes.selectMenuItemSelected
                               }}
-                              value="blank2"
+                              value="blank"
                             >
                               -
                             </MenuItem>

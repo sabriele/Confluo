@@ -1,5 +1,6 @@
 import Dashboard from "views/Dashboard/Dashboard.jsx";
 import StudentForm from "views/Students/StudentForm.jsx";
+import StudentEdit from "views/Students/StudentEdit.jsx";
 import Students from "views/Students/Students.jsx";
 import Student from "views/Students/Student.jsx";
 import Calendar from "views/Calendar/Calendar.jsx";
@@ -48,6 +49,12 @@ var dashRoutes = [
         name: "New Student",
         mini: "NS",
         component: StudentForm
+      },
+      {
+        path: "/students/:id/edit",
+        name: "Edit Student",
+        mini: "ES",
+        component: StudentEdit
       },
       {
         path: "/students/:id",

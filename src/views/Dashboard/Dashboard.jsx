@@ -202,9 +202,13 @@ class Dashboard extends React.Component {
                                   placement="bottom"
                                   classes={{ tooltip: classes.tooltip }}
                                 >
-                                  <Button color="success" simple justIcon>
-                                    <Edit className={classes.underChartIcons} />
-                                  </Button>
+                                  <Link to={`/students/${student.id}/edit`}>
+                                    <Button color="success" simple justIcon>
+                                      <Edit
+                                        className={classes.underChartIcons}
+                                      />
+                                    </Button>
+                                  </Link>
                                 </Tooltip>
                                 <Tooltip
                                   id="tooltip-top"
