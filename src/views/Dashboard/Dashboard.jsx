@@ -181,91 +181,102 @@ class Dashboard extends React.Component {
             </GridContainer>
             <br />
             <GridContainer>
-              {students.map(
-                (student, i) =>
-                  student.active ? (
-                    <GridItem xs={12} sm={12} md={4} key={i}>
-                      <Card product className={classes.cardHover}>
-                        <CardHeader image className={classes.cardHeaderHover}>
-                          <img src={student.imageUrl} alt="..." />
-                        </CardHeader>
-                        <CardBody>
-                          <div className={classes.cardHoverUnder}>
-                            <Tooltip
-                              id="tooltip-top"
-                              title="Edit"
-                              placement="bottom"
-                              classes={{ tooltip: classes.tooltip }}
+              {students.length > 0 && (
+                <React.Fragment>
+                  {students.map(
+                    (student, i) =>
+                      student.active ? (
+                        <GridItem xs={12} sm={12} md={4} key={i}>
+                          <Card product className={classes.cardHover}>
+                            <CardHeader
+                              image
+                              className={classes.cardHeaderHover}
                             >
-                              <Button color="success" simple justIcon>
-                                <Edit className={classes.underChartIcons} />
-                              </Button>
-                            </Tooltip>
-                            <Tooltip
-                              id="tooltip-top"
-                              title="Remove"
-                              placement="bottom"
-                              classes={{ tooltip: classes.tooltip }}
-                            >
-                              <Button
-                                color="danger"
-                                simple
-                                justIcon
-                                onClick={() => this.handleDelete(student.id)}
+                              <img src={student.imageUrl} alt="..." />
+                            </CardHeader>
+                            <CardBody>
+                              <div className={classes.cardHoverUnder}>
+                                <Tooltip
+                                  id="tooltip-top"
+                                  title="Edit"
+                                  placement="bottom"
+                                  classes={{ tooltip: classes.tooltip }}
+                                >
+                                  <Button color="success" simple justIcon>
+                                    <Edit className={classes.underChartIcons} />
+                                  </Button>
+                                </Tooltip>
+                                <Tooltip
+                                  id="tooltip-top"
+                                  title="Remove"
+                                  placement="bottom"
+                                  classes={{ tooltip: classes.tooltip }}
+                                >
+                                  <Button
+                                    color="danger"
+                                    simple
+                                    justIcon
+                                    onClick={() =>
+                                      this.handleDelete(student.id)
+                                    }
+                                  >
+                                    <Clear
+                                      className={classes.underChartIcons}
+                                    />
+                                  </Button>
+                                </Tooltip>
+                              </div>
+                              <h4 className={classes.cardProductTitle}>
+                                {student.firstName} {student.lastName}
+                              </h4>
+                              <div style={{ textAlign: "center" }}>
+                                <h6 className={classes.cardProductDesciption}>
+                                  {student.level.type} {student.level.year} |{" "}
+                                  {student.subjects.map((subject, i) => [
+                                    i > 0 && ", ",
+                                    <span key={i}>{subject}</span>
+                                  ])}
+                                </h6>
+                              </div>
+                              <ul>
+                                {student.schedules.map((schedule, i) => [
+                                  <li key={i}>
+                                    {schedule.day},{" "}
+                                    {moment(schedule.time).format("hA")} for{" "}
+                                    {schedule.duration}{" "}
+                                    {schedule.duration === 1 ? "hour" : "hours"}
+                                  </li>
+                                ])}
+                              </ul>
+                            </CardBody>
+                            <CardFooter product>
+                              <div
+                                className={`${classes.stats} ${
+                                  classes.productStats
+                                }`}
                               >
-                                <Clear className={classes.underChartIcons} />
+                                <Place /> {student.address}
+                              </div>
+                              <Button
+                                className={`${classes.stats} ${
+                                  classes.productStats
+                                }`}
+                                color="transparent"
+                                simple
+                                component={Link}
+                                to={`/students/${student.id}`}
+                                style={{ padding: "12px 0px" }}
+                              >
+                                View »
                               </Button>
-                            </Tooltip>
-                          </div>
-                          <h4 className={classes.cardProductTitle}>
-                            {student.firstName} {student.lastName}
-                          </h4>
-                          <div style={{ textAlign: "center" }}>
-                            <h6 className={classes.cardProductDesciption}>
-                              {student.level.type} {student.level.year} |{" "}
-                              {student.subjects.map((subject, i) => [
-                                i > 0 && ", ",
-                                <span key={i}>{subject}</span>
-                              ])}
-                            </h6>
-                          </div>
-                          <ul>
-                            {student.schedules.map((schedule, i) => [
-                              <li key={i}>
-                                {schedule.day},{" "}
-                                {moment(schedule.time).format("hA")} for{" "}
-                                {schedule.duration}{" "}
-                                {schedule.duration === 1 ? "hour" : "hours"}
-                              </li>
-                            ])}
-                          </ul>
-                        </CardBody>
-                        <CardFooter product>
-                          <div
-                            className={`${classes.stats} ${
-                              classes.productStats
-                            }`}
-                          >
-                            <Place /> {student.address}
-                          </div>
-                          <Button
-                            className={`${classes.stats} ${
-                              classes.productStats
-                            }`}
-                            color="transparent"
-                            simple
-                            component={Link}
-                            to={`/students/${student.id}`}
-                            style={{ padding: "12px 0px" }}
-                          >
-                            View »
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    </GridItem>
-                  ) : (
-                    ""
-                  )
+                            </CardFooter>
+                          </Card>
+                        </GridItem>
+                      ) : (
+                        ""
+                      )
+                  )}
+                </React.Fragment>
               )}
             </GridContainer>
           </GridItem>

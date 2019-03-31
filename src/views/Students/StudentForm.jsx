@@ -23,9 +23,12 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
-import { saveStudent } from "../../services/studentService";
-
 import regularFormsStyle from "assets/jss/views/regularFormsStyle";
+
+const isDev = process.env.NODE_ENV !== "production";
+const url = isDev
+  ? "http://localhost:3001"
+  : "https://confluo-api.herokuapp.com";
 
 class StudentForm extends React.Component {
   state = {
@@ -101,12 +104,32 @@ class StudentForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { rates } = this.state;
+    const { rates, schedules, level } = this.state;
     let student = { ...this.state };
     student.rates = parseFloat(rates);
+    student.schedules = schedules.map(schedule => {
+      schedule.duration = parseFloat(schedule.duration);
+      return schedule;
+    });
+    student.level.year = parseInt(level.year);
 
-    saveStudent(student);
-    this.props.history.replace("/dashboard");
+    fetch(`${url}/students`, {
+      method: "POST",
+      body: JSON.stringify(student),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include"
+    })
+      .then(res => {
+        if (res.status === 201) {
+          this.props.history.push("/dashboard");
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch(() => {
+        console.error("Error while adding a student");
+      });
   };
 
   render() {
